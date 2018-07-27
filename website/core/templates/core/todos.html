@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+<!-- Page Heading -->
+<h1 class="my-4">Notícias do cariri
+    <small>{{ channel.nome }}</small>
+</h1>
+
+
+<div class="row">
+
+    {% for tx in texto %}
+            <div class="col-lg-4 col-md-4 col-sm-6 portfolio-item" >
+                <div class="card h-80">
+                    <a href="{% url 'news:detail' tx.get_absolute_url %}"><img class="card-img-top" src="{{ tx.imagem }}" style="width: 100%; height:auto;"></a>
+                    <div class="card-body">
+                        <h4 class="card-title">
+                            <a href="{% url 'news:detail' tx.get_absolute_url %}">{{ tx.titulo }}</a>
+                        </h4>
+                        <p class="card-text">
+
+                            {{ tx.descricao|striptags|truncatewords:20 }}</p>
+                        <hr>
+                        {{ tx.data.date }}
+                    </div>
+                </div>
+            </div>
+    {% endfor %}
+
+</div>
+
+{% endblock content %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <div class="container-fluid">
+
+        <br>
+        <br>
+        <!-- Page Heading -->
+        <h1 class="my-4 text-center">Portal de Notícias,
+            <small>dos melhores sites da região</small>
+        </h1>
+        <div class="row">
+            <div class="col-lg-2"></div>
+
+            {% for tx in texto %}
+
+                <div class="col-lg-4 col-sm-6" >
+                    <p>
+                        <small>
+                            {{ tx.nome }}
+                        </small>
+                    </p>
+                    <div class="card h-80" style="height: 200px; background-color: whitesmoke">
+
+                        <a href="{% url 'news:todos' tx.slug %}">
+                            <img class="card-img-top" src="{{ tx.imagem }}" alt="">
+                        </a>
+
+                    </div>
+                </div>
+            {% endfor %}
+            <br>
+            <hr>
+
+
+        </div>
+    </div>
+    <!-- /.row -->
+
+
+
+{% endblock content %}

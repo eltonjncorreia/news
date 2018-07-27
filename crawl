@@ -1,0 +1,13 @@
+#!/bin/bash
+
+source .venv/bin/activate
+
+echo -n > website/news_json/miseria.json
+echo -n > website/news_json/juazeiro.json
+
+scrapy crawl miseria -o website/news_json/miseria.json
+scrapy crawl juazeiro -o website/news_json/juazeiro.json
+
+git add .
+git commit -m "news"
+git push heroku master --force

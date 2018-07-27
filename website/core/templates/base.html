@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="pt-br">
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119968655-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-119968655-1');
+    </script>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Portal de noticias. Aqui tem informação atual. ">
+    <meta name="author" content="Elton">
+    <meta name="robots" content="index, follow, all" />
+    <meta name="googlebot" content="index, follow, all" />
+    <meta name="google" content="sitelinkssearchbox"/>
+    <meta name="google" content="translate"/>
+    <link rel="shortcut icon" href="../static/img/favico.ico" />
+
+    <title>Jornal Web</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/3-col-portfolio.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+{% include 'core/nav.html' %}
+
+<!-- Page Content -->
+<div class="container" style="padding-bottom:90px ">
+
+    {% block content %}
+    {% endblock content %}
+
+
+    <!--&lt;!&ndash; Pagination &ndash;&gt;-->
+    <!--<ul class="pagination justify-content-center">-->
+    <!--<li class="page-item">-->
+    <!--<a class="page-link" href="#" aria-label="Previous">-->
+    <!--<span aria-hidden="true">&laquo;</span>-->
+    <!--<span class="sr-only">Previous</span>-->
+    <!--</a>-->
+    <!--</li>-->
+    <!--<li class="page-item">-->
+    <!--<a class="page-link" href="#">1</a>-->
+    <!--</li>-->
+    <!--<li class="page-item">-->
+    <!--<a class="page-link" href="#">2</a>-->
+    <!--</li>-->
+    <!--<li class="page-item">-->
+    <!--<a class="page-link" href="#">3</a>-->
+    <!--</li>-->
+    <!--<li class="page-item">-->
+    <!--<a class="page-link" href="#" aria-label="Next">-->
+    <!--<span aria-hidden="true">&raquo;</span>-->
+    <!--<span class="sr-only">Next</span>-->
+    <!--</a>-->
+    <!--</li>-->
+    <!--</ul>-->
+
+</div>
+
+<!-- /.container -->
+<!-- Contact -->
+
+
+<section id="sugestao">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                {% if messages %}
+                    <div class="alert alert-success">
+                        {% for message in messages %}
+                            {{ message }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <h2 class="section-heading text-uppercase">Sugestão</h2>
+                <h3 class="section-subheading text-muted">Quais notícias, portais, blogs, gostaria de acompanhar.</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <form action="{% url 'news:home' %}" method="post" novalidate="novalidate">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <input class="form-control" id="name"  name="nome" type="text" placeholder="Seu nome *" required="required" data-validation-required-message="Informe seu nome">
+                                <i class="alert-danger">{{ form.nome.errors }}</i>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" id="email" name="email" type="email" placeholder="Email " data-validation-required-message="Este não precisa informar se não quiser">
+                                <i class="alert-danger">{{ form.email.errors }}</i>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <textarea class="form-control" rows="3" id="message" name="mensagem" placeholder="Sugestão *" required="required" data-validation-required-message="É necessario uma mensagem."></textarea>
+                                <i class="alert-danger">{{ form.mensagem.errors }}</i>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="col-lg-12 text-center">
+                            <div id="success"></div>
+                            <button id="sendMessageButton" class="btn btn-primary btn-xl text-uppercase" type="submit">Enviar</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+<br>
+<!-- Footer -->
+<footer class="footer text-center">
+    <div class="container">
+        <p class="text-muted small mb-0">Copyright &copy;  eltonjncorreia@bol.com 2018</p>
+    </div>
+</footer>
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded js-scroll-trigger" href="#page-top">
+    <i class="fa fa-angle-up"></i>
+</a>
+<!-- Bootstrap core JavaScript -->
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+
+</html>
