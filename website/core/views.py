@@ -16,6 +16,7 @@ from unicodedata import normalize
 
 
 def home(request):
+    create_news_channel('website/news_json/miseria.json')
     create_news_channel('website/news_json/juazeiro.json')
     todos_channels = Channel.objects.all()
     if request.method == 'POST':
