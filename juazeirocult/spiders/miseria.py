@@ -7,8 +7,8 @@ class NewsSpider(scrapy.Spider):
     start_urls = ['http://www.miseria.com.br/']
 
     def parse(self, response):
-        url = 'http://www.miseria.com.br/'
-        logo = response.css('div.logo_topo img::attr(src)').extract_first()
+        url = 'http://www.miseria.com.br/?page=ultimas'
+        logo = response.css('nav.light-blue div.nav-wrapper img::attr(src)').extract_first()
         nome_site = response.css('title::text').extract_first()
 
         yield {
@@ -16,7 +16,7 @@ class NewsSpider(scrapy.Spider):
             'nome_site': nome_site
         }
 
-        for div in response.css('div.bxslider div.infos'):
+        for div in response.css('body > div.lighten-2 > div.container > div > div > div.col.s12.m8.l8'):
             item = div.css('a::attr(href)').extract_first()
 
             yield scrapy.Request('{}'.format(item), callback=self.detail)
