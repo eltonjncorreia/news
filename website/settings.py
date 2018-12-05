@@ -131,7 +131,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 # # static files hosted on the Amazon S3
-# AWS_STORAGE_BUCKET_NAME = 'news-cariri-bucket'
+# AWS_STORAGE_BUCKET_NAME = ''
 # AWS_S3_REGION_NAME = 'us-west-1'   # us-east-2, por exemplo,
 # AWS_ACCESS_KEY_ID = config('AWS_ACCESS_KEY_ID')
 # AWS_SECRET_ACCESS_KEY = config('AWS_SECRET_ACCESS_KEY')
