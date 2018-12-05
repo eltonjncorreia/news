@@ -11,5 +11,4 @@ scrapy crawl juazeiro -o website/news_json/juazeiro.json
 git add .
 git commit -m "news"
 git push heroku master --force
-git push $login
-
+git push 
