@@ -11,7 +11,7 @@ cryptography==2.1.4
 cssselect==1.0.3
 dj-database-url==0.5.0
 dj-static==0.0.6
-Django==2.0.2
+Django==2.0.12
 django-storages==1.6.5
 docutils==0.14
 hyperlink==17.3.1
